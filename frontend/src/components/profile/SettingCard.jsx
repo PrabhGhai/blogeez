@@ -10,7 +10,7 @@ const SettingCard = ({ user, setdiv }) => {
   };
   const update = async (e) => {
     await axios.put(
-      `http://localhost:1000/api/auth/updateUsername/${user._id}`,
+      `${window.location.origin}/api/auth/updateUsername/${user._id}`,
       Data
     );
     alert("Updated Successfully");
