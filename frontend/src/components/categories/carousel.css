@@ -1,0 +1,27 @@
+.cat-items p:hover {
+  background-color: #0b054a;
+  color: white;
+}
+.cat-items p {
+  padding: 4px;
+}
+
+.cat-items {
+  max-height: 87.7vh;
+  overflow-y: scroll;
+}
+.cat-items:hover {
+  cursor: pointer;
+}
+.cat-content ::-webkit-scrollbar {
+  width: 2px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: silver;
+}
+.cat-content {
+  z-index: 198;
+}
