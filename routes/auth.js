@@ -49,4 +49,27 @@ router.put("/updateUsername/:id", async (req, res) => {
     .save()
     .then(() => res.status(200).json({ message: "Updated Successfully" }));
 });
+
+//UPDATE PASSWORD
+
+router.put("/updatePassword/:id", async (req, res) => {
+  const user = await User.findById(req.params.id);
+  const isPasswordCorrect = bcrypt.compareSync(
+    req.body.password,
+    user.password
+  );
+  if (!isPasswordCorrect) {
+    res.status(200).json({ message: "Current password is incorrect" });
+  } else {
+    const { newpassword } = req.body;
+    const hashPassword = bcrypt.hashSync(newpassword);
+    const update = await User.findByIdAndUpdate(req.params.id, {
+      password: hashPassword,
+    });
+    await update
+      .save()
+      .then(() => res.status(200).json({ message: "Updated Successfully" }));
+  }
+});
+
 module.exports = router;

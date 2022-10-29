@@ -46,3 +46,12 @@
 .cardedit {
   border-radius: 10px;
 }
+
+.change {
+  color: blue;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.change:hover {
+  text-decoration: underline;
+}
