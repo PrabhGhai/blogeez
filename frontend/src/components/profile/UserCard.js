@@ -57,32 +57,6 @@ const UserCard = ({ user }) => {
                       }}
                     />
                   </div>
-                  {/*   
-                  <div className="mt-2">
-                    <label
-                      className="px-2"
-                      for="upload-photo"
-                      style={{
-                        cursor: "pointer",
-                        backgroundColor: "white",
-                        color: "black",
-                      }}
-                    >
-                      Change Image
-                    </label>
-                    <input
-                      type="file"
-                      onChange={change}
-                      name="image"
-                      id="upload-photo"
-                      style={{
-                        display: "none",
-                        position: "absolute",
-                        zIndex: "-1",
-                      }}
-                    />
-                  </div>
-                  */}
                   <div
                     className=" d-flex justify-content-center my-1"
                     style={{ color: "silver" }}

@@ -8,6 +8,10 @@ import "./Navbar.css";
 const Navbar = () => {
   const isLoggedIn = useSelector((state) => state.isLoggedIn);
   const dispatch = useDispatch();
+  const id = localStorage.getItem("userId");
+  if (id) {
+    dispatch(authActions.login());
+  }
   return (
     <div>
       <nav

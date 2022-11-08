@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 const Blog = ({ blog }) => {
-  console.log(blog);
   const [Para, setPara] = useState(700);
   const [Button, setButton] = useState("...View More");
   const [Image, setImage] = useState("none");
