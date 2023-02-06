@@ -24,8 +24,7 @@ const YourBlogsCard = () => {
       .delete(`${window.location.origin}/api/post/${id}`)
       .then(() => history("/profile/addblogs"));
   };
-  const Blog = Profile.blogs.slice(0).reverse();
-
+  const Blog = Profile.blogs;
   return (
     <div className="container my-2 ">
       {Blog &&
