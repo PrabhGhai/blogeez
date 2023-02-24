@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import { AiFillCamera } from "react-icons/ai";
 import { useState } from "react";
 import "./UserBlog.css";
 const SettingCard = ({ user, setdiv }) => {
@@ -8,6 +9,8 @@ const SettingCard = ({ user, setdiv }) => {
   const [View, setView] = useState("Change Password");
   const [DisplayPassword, setDisplayPassword] = useState("none");
   const [DsipalyUsernme, setDisplayUsername] = useState("block");
+  const [Image, setImage] = useState();
+  const [uploadImage, setuploadImage] = useState({ profile: "" });
   const change = (e) => {
     const { name, value } = e.target;
     setData({ ...Data, [name]: value });
@@ -43,6 +46,7 @@ const SettingCard = ({ user, setdiv }) => {
       setdiv("none");
     }
   };
+
   const changeView = () => {
     View === "Change Password"
       ? setView("Change Username")
@@ -53,6 +57,24 @@ const SettingCard = ({ user, setdiv }) => {
     View === "Change Password"
       ? setDisplayUsername("none")
       : setDisplayUsername("block");
+  };
+
+  const submit = async (e) => {
+    e.preventDefault();
+    const data = new FormData();
+    data.append("file", Image);
+    data.append("upload_preset", "ImageUploader");
+    await axios
+      .post("https://api.cloudinary.com/v1_1/dmdv1pt2f/image/upload", data)
+      .then((res) => {
+        setuploadImage({ profile: `${res.data.secure_url}` });
+      });
+    updateImage();
+  };
+  const updateImage = async () => {
+    await axios
+      .put(`${window.location.origin}/api/auth/upload/${user._id}`, uploadImage)
+      .then((res) => console.log(res.data.message));
   };
 
   return (
@@ -80,6 +102,25 @@ const SettingCard = ({ user, setdiv }) => {
             <div>
               <button className="my-3 btn btn-success" onClick={update}>
                 Update
+              </button>
+            </div>
+            <div>
+              <label
+                className="text-dark"
+                for="img"
+                style={{ cursor: "pointer" }}
+              >
+                <AiFillCamera className="me-2" />
+                Change Image
+              </label>
+              <input
+                id="img"
+                type="file"
+                style={{ display: "none" }}
+                onChange={(e) => setImage(e.target.files[0])}
+              />
+              <button className="ms-5 btn btn-dark" onClick={submit}>
+                Upload
               </button>
             </div>
           </div>

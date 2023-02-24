@@ -11,7 +11,7 @@ const Homeheader = () => {
         <div className="container d-flex justify-content-center align-items-center flex-column ">
           <h1 className="text-white header">Let's Start Blogging</h1>
           <h5 className="text-white">
-            Write the blogs in simple way and share with the world in
+            Write the blogs in simple way and share with the world in &nbsp;
             {dt.getFullYear()}.
           </h5>
         </div>
