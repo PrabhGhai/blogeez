@@ -41,6 +41,18 @@ router.post("/login", async (req, res, next) => {
     console.log(error);
   }
 });
+
+//UPDATE IMAGE
+router.put("/upload/:id", async (req, res) => {
+  const { profile } = req.body;
+  const update = await User.findByIdAndUpdate(req.params.id, { profile });
+  await update
+    .save()
+    .then(() =>
+      res.status(200).json({ message: "Image Updated Successfully" })
+    );
+});
+
 //UPDATE username
 router.put("/updateUsername/:id", async (req, res) => {
   const { username } = req.body;
