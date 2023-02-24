@@ -61,15 +61,20 @@ const SettingCard = ({ user, setdiv }) => {
 
   const submit = async (e) => {
     e.preventDefault();
+    setdiv("none");
     const data = new FormData();
     data.append("file", Image);
     data.append("upload_preset", "ImageUploader");
     await axios
       .post("https://api.cloudinary.com/v1_1/dmdv1pt2f/image/upload", data)
       .then((res) => {
-        setuploadImage({ profile: `${res.data.secure_url}` });
+        console.log(res.data.secure_url);
+        setuploadImage({ profile: res.data.secure_url });
+        console.log(uploadImage);
       });
-    updateImage();
+    if (uploadImage.profile != "") {
+      updateImage();
+    }
   };
   const updateImage = async () => {
     await axios

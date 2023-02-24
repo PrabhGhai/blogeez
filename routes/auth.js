@@ -1,7 +1,6 @@
 const User = require("../models/User");
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
-const multer = require("multer");
 
 //signin
 router.post("/register", async (req, res, next) => {
@@ -45,6 +44,7 @@ router.post("/login", async (req, res, next) => {
 //UPDATE IMAGE
 router.put("/upload/:id", async (req, res) => {
   const { profile } = req.body;
+  console.log(profile);
   const update = await User.findByIdAndUpdate(req.params.id, { profile });
   await update
     .save()
