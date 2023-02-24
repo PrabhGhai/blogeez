@@ -74,6 +74,10 @@ const SettingCard = ({ user, setdiv }) => {
       });
     if (uploadImage.profile != "") {
       updateImage();
+    } else {
+      alert(
+        "There is some error while uploading your image. Please try again. "
+      );
     }
   };
   const updateImage = async () => {
