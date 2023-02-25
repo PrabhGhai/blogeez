@@ -22,16 +22,21 @@ const Blogs = () => {
               .map((item, index) => (
                 <>
                   <div className=" container mb-3 bg-white p-3">
-                    <div className="container">
-                      <p>
+                    <div
+                      className="container  d-flex justify-content-start align-items-center"
+                      style={{ fontSize: "20px" }}
+                    >
+                      <CgProfile className="me-2" />
+                      <p className="m-0">
                         <Link
                           to={`/categories/all/author/${item.username._id}`}
-                          style={{ textDecoration: "none", color: "silver" }}
+                          style={{ textDecoration: "none", color: "black" }}
                         >
                           {item.username.username}
                         </Link>
                       </p>
                     </div>
+                    <hr />
                     <div
                       className="container "
                       style={{
@@ -51,8 +56,15 @@ const Blogs = () => {
                     >
                       {item.description}
                     </div>
-                    <div className=" container d-flex justify-content-center align-items-center my-3">
-                      <img className="img-fluid" alt="" src={item.photo} />
+                    <div className=" container d-flex justify-content-center align-items-center my-2">
+                      <img
+                        className="img-fluid"
+                        alt=""
+                        src={item.photo}
+                        style={{
+                          objectFit: "contain",
+                        }}
+                      />
                     </div>
                   </div>
                 </>
