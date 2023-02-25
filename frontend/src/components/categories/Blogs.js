@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { CgProfile } from "react-icons/cg";
 import { Link } from "react-router-dom";
 const Blogs = () => {
   const [Blog, setBlog] = useState();
